@@ -1,0 +1,98 @@
+<body data-spy="scroll" data-target=".navbar" data-offset="90">
+
+    <!--login start-->
+    <section class="p-lg-0 login-sec">
+        <div class="container-fluid">
+  
+            <div class="row">
+                <div class="col-12 col-lg-6 order-2 order-lg-1 position-relative d-flex align-items-center bg-1">
+                    <div class="login-content text-center text-lg-left">
+  
+                        <!--logo-->
+                        <div class="float-middle-logo">
+                            <a class="navbar-brand link" routerLink="">
+                                <img src="../../assets/img/logo.png" class="" alt="logo">
+                            </a>
+                        </div>
+  
+                        <!--title-->
+                        <div class="title d-inline-block mb-4">
+                            <h3 class="mb-3 heading">Get more things, done with Registeration platform.</h3>
+  
+                        </div>
+  
+                        <!--form-->
+                        <form #ng="">
+                           <div class="row">
+                               <div class="col-12 col-lg-6">
+                                   <input class="form-control" type="text" name="nom" >
+                                   <div  class="text-danger">
+                                    <span >Le nom est obligatoire.</span>
+                                </div>
+                               </div>
+                               <div class="col-12 col-lg-6">
+                                <input class="form-control" type="text" name="prenom" >
+                                <div  class="text-danger">
+                                  <span >Le prenom est obligatoire.</span>
+                              </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                              <input class="form-control" type="text" name="num" >
+                              <div  class="text-danger">
+                                <span >Le num est obligatoire.</span>
+                            </div>
+                          </div>
+                               <div class="col-12 col-lg-6">
+                                   <input class="form-control" type="text" name="localisation" >
+                                   <div  class="text-danger">
+                                    <span >Le localisation est obligatoire.</span>
+                                </div>
+                               </div>
+                               <div class="col-12">
+                                   <input class="form-control" type="email" name="email">
+                                   <div  class="text-danger">
+                                    <span>Le email est obligatoire.</span>
+                                </div>
+  
+                               </div>
+                               <div class="col-12">
+                                <input class="form-control" type="text" name="email">
+                                <div  class="text-danger">
+                                  <span >Le adresse est obligatoire.</span>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                             <input type="hidden"  class="form-control" name="role" >
+                              <div >
+                                <span >Le role est obligatoire.</span>
+                            </div>
+                            </div>
+                               <div class="col-12">
+                                   <input class="form-control" type="text" name="password" >
+                                   <div class="text-danger">
+                                    <span >Le nom est obligatoire.</span>
+                                    <span >Le mot de passe doit avoir au moins 8 caractères..</span>
+  
+                                </div>
+  
+                               </div>
+                           </div>
+                           <div class="form-button">
+                            <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn"  (click)="onRegisterSubmit()">Register</button><a routerLink="/lgin" class="text">Already registered! Login here?</a>
+                        </div>
+                        </form>
+                    </div>
+                  
+                </div>
+                <div class="col-12 col-lg-6 p-0 order-1 order-lg-2 login-side-background" style="background-image: url('https://img.freepik.com/vecteurs-premium/banniere-differents-delicieux-fast-food_24877-66528.jpg?w=740');">
+                    <!--Feature Image Half-->
+                </div>
+            </div>
+  
+  
+        </div>
+    </section>
+  
+  
+    </body>
+  

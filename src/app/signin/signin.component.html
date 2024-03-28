@@ -1,0 +1,121 @@
+<body>
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        
+        <form #ng="">
+          <div class="row">
+           
+              <div class="col-12 col-lg-6">
+               
+                  <input class="form-control form-control-lg" type="text" >
+                  <div  class="text-danger">
+                   <span >Le nom est obligatoire.</span>
+               </div>
+              </div>
+              <div class="col-12 col-lg-6">
+               <input class="form-control form-control-lg" type="text">
+               <div class="text-danger">
+                 <span >Le prenom est obligatoire.</span>
+             </div>
+           </div>
+           <div class="col-12 col-lg-6">
+             <input class="form-control form-control-lg" type="text">
+             <div  class="text-danger">
+               <span >Le num est obligatoire.</span>
+           </div>
+         </div>
+              <div class="col-12 col-lg-6">
+                  <input class="form-control form-control-lg" type="text" >
+                  <div class="text-danger">
+                   <span >Le localisation est obligatoire.</span>
+               </div>
+              </div>
+              <div class="col-12">
+                  <input class="form-control form-control-lg" type="email" >
+                  <div  class="text-danger">
+                   <span >Le email est obligatoire.</span>
+               </div>
+  
+              </div>
+              <div class="col-12">
+               <input class="form-control form-control-lg" type="text" >
+               <div  class="text-danger">
+                 <span >Le adresse est obligatoire.</span>
+             </div>
+           </div>
+           <div class="col-12">
+            <input type="hidden"  class="form-control" name="role"  >
+  
+           </div>
+              <div class="col-12">
+                  <input class="form-control form-control-lg" type="text" >
+                  <div  class="text-danger">
+                   <span >Le nom est obligatoire.</span>
+                   <span>Le mot de passe doit avoir au moins 8 caractères..</span>
+  
+               </div>
+  
+              </div>
+          </div>
+           <div class="form-button">
+               <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn">Register</button>
+           </div>
+       </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <a href="/home" ><i class="fa fa-home" aria-hidden="true"></i>E-SHOPE</a>
+        <form #f="">
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your account</span>
+  
+          <input type="email" id="form3Example3"  name="email" class="form-control form-control-lg"
+            placeholder="Enter a valid email address" #email1="" required />
+            <div  class="text-danger">
+              <div >Email is required.</div>
+            </div>
+  
+            <input type="password" id="form3Example4"  name="password"class="form-control form-control-lg"
+              placeholder="Enter password" required/>
+              <div  class="text-danger">
+                <div >Password is required.</div>
+              </div>
+          <a href="/rest">Forgot your password?</a>
+          <button type="button" class="btn btn-large rounded-pill main-btn " 
+          >Login</button>
+  
+        </form>
+      </div>
+      <div class="overlay-container" >
+        
+        <div class="overlay">
+          
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us please login with your personal info</p>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right" >
+            
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- <footer>
+      <p>
+        Created with <i class="fa fa-heart"></i> by
+        <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+        - Read how I created this and how you can join the challenge
+        <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+      </p>
+    </footer> -->
+  </body>
+  
