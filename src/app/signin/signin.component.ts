@@ -1,6 +1,9 @@
 
 
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { User } from '../Model/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -21,6 +24,15 @@ export class SigninComponent implements AfterViewInit {
     });
   }
 
+  users : User[]  = [];
 
+  constructor(private userservice : UserService,private router: Router) { }
+
+  ngOnInit() : void {
+
+    this.userservice
+    .getuser()
+    .subscribe((result : User[]) => (this.users = result));
+  }
 
 }
