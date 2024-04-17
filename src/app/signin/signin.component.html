@@ -2,69 +2,64 @@
     <div class="container" id="container">
       <div class="form-container sign-up-container">
         
-        <form #ng="">
+        <form #ng="ngForm">
           <div class="row">
            
               <div class="col-12 col-lg-6">
                
-                  <input class="form-control form-control-lg" type="text" >
-                  <div  class="text-danger">
-                   <span >Le nom est obligatoire.</span>
+                  <input class="form-control form-control-lg" type="text" name="nom" [(ngModel)]="user.firstName" placeholder="nom" #nom="ngModel" required>
+                  <div *ngIf="nom.touched && nom.invalid" class="text-danger">
+                   <span *ngIf="nom.errors?.['required']">Le nom est obligatoire.</span>
                </div>
               </div>
               <div class="col-12 col-lg-6">
-               <input class="form-control form-control-lg" type="text">
-               <div class="text-danger">
-                 <span >Le prenom est obligatoire.</span>
+               <input class="form-control form-control-lg" type="text" name="prenom" [(ngModel)]="user.lastName" #prenom="ngModel" placeholder="prenom" required>
+               <div *ngIf="prenom.touched && prenom.invalid" class="text-danger">
+                 <span *ngIf="prenom.errors?.['required']">Le prenom est obligatoire.</span>
              </div>
            </div>
            <div class="col-12 col-lg-6">
-             <input class="form-control form-control-lg" type="text">
-             <div  class="text-danger">
-               <span >Le num est obligatoire.</span>
+             <input class="form-control form-control-lg" type="text" name="num" [(ngModel)]="user.phone" placeholder="phone" #num="ngModel" required>
+             <div *ngIf="num.touched && num.invalid" class="text-danger">
+               <span *ngIf="num.errors?.['required']">Le num est obligatoire.</span>
            </div>
          </div>
-              <div class="col-12 col-lg-6">
-                  <input class="form-control form-control-lg" type="text" >
-                  <div class="text-danger">
-                   <span >Le localisation est obligatoire.</span>
-               </div>
-              </div>
+            
               <div class="col-12">
-                  <input class="form-control form-control-lg" type="email" >
-                  <div  class="text-danger">
-                   <span >Le email est obligatoire.</span>
+                  <input class="form-control form-control-lg" type="email" name="email"[(ngModel)]="user.email" placeholder="E-mail Address" #email="ngModel" required>
+                  <div *ngIf="email.touched && email.invalid" class="text-danger">
+                   <span *ngIf="email.errors?.['required']">Le email est obligatoire.</span>
                </div>
   
               </div>
               <div class="col-12">
-               <input class="form-control form-control-lg" type="text" >
-               <div  class="text-danger">
-                 <span >Le adresse est obligatoire.</span>
+               <input class="form-control form-control-lg" type="text" name="adresse"[(ngModel)]="user.addresse"  #adresse="ngModel" placeholder="user Address" required>
+               <div *ngIf="adresse.touched && adresse.invalid" class="text-danger">
+                 <span *ngIf="adresse.errors?.['required']">Le adresse est obligatoire.</span>
              </div>
            </div>
            <div class="col-12">
-            <input type="hidden"  class="form-control" name="role"  >
+            <input type="hidden"  class="form-control" name="role" [(ngModel)]="user.role" >
   
            </div>
               <div class="col-12">
-                  <input class="form-control form-control-lg" type="text" >
-                  <div  class="text-danger">
-                   <span >Le nom est obligatoire.</span>
-                   <span>Le mot de passe doit avoir au moins 8 caractères..</span>
+                  <input class="form-control form-control-lg" type="text" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="Password" required minlength="8">
+                  <div *ngIf="password.touched && password.invalid" class="text-danger">
+                   <span *ngIf="password.errors?.['required']">Le nom est obligatoire.</span>
+                   <span *ngIf="password.errors?.['minlength']">Le mot de passe doit avoir au moins 8 caractères..</span>
   
                </div>
   
               </div>
-          </div>
-           <div class="form-button">
-               <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn">Register</button>
-           </div>
-       </form>
+              <div class="form-button">
+                  <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn" [disabled]="ng.invalid" (click)="onRegisterSubmit()">Register</button>
+              </div>
+              </div>
+          </form>
       </div>
       <div class="form-container sign-in-container">
-        <a href="/home" ><i class="fa fa-home" aria-hidden="true"></i>E-SHOPE</a>
-        <form #f="">
+        <a href="/home" ><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+        <form #f="ngForm">
           <h1>Sign in</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -73,25 +68,25 @@
           </div>
           <span>or use your account</span>
   
-          <input type="email" id="form3Example3"  name="email" class="form-control form-control-lg"
-            placeholder="Enter a valid email address" #email1="" required />
-            <div  class="text-danger">
-              <div >Email is required.</div>
+          <input type="email" id="form3Example3" [(ngModel)]="user.email" name="email" class="form-control form-control-lg"
+            placeholder="Enter a valid email address" #email1="ngModel" required />
+            <div *ngIf="email1.touched && email1.invalid" class="text-danger">
+              <div *ngIf="email1.errors?.['required']">Email is required.</div>
             </div>
   
-            <input type="password" id="form3Example4"  name="password"class="form-control form-control-lg"
+            <input type="password" id="form3Example4" #password1="ngModel" [(ngModel)]="user.password" name="password"class="form-control form-control-lg"
               placeholder="Enter password" required/>
-              <div  class="text-danger">
-                <div >Password is required.</div>
+              <div *ngIf="password1.touched && password1.invalid" class="text-danger">
+                <div *ngIf="password1.errors?.['required']">Password is required.</div>
               </div>
           <a href="/rest">Forgot your password?</a>
-          <button type="button" class="btn btn-large rounded-pill main-btn " 
+          <button type="button" class="btn btn-large rounded-pill main-btn " (click)="login()"
           >Login</button>
   
         </form>
       </div>
       <div class="overlay-container" >
-        
+      
         <div class="overlay">
           
           <div class="overlay-panel overlay-left">
