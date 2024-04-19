@@ -17,16 +17,17 @@ export class UserService {
 
 
   login(user: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Auth/login`, user);
+    return this.http.post(`${environment.apiUrl}/Auth/login`, user, {responseType:"text"});
   }
   getuser(): Observable<any> {
-    const data = {iduser:''}
+    const data = {Id:''}
     return this.http.post(`${environment.apiUrl}/${this.url}`, data);
   }
 
   registerUser(user: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/${this.url}`, user);
   }
+
   private readonly TOKEN_KEY = 'access_token';
 
   saveToken(name:string ,token: string): void {
@@ -39,25 +40,26 @@ export class UserService {
   removeToken() {
     localStorage.removeItem('token');
   }
-
+ 
+ 
+  
+ 
+  
   isLoggedIn="false"
   setIsLoggedIn(isLoggedIn: boolean) {
     sessionStorage.setItem(this.isLoggedIn, isLoggedIn.toString());
 
   }
-  
+
   getIsLoggedIn(): boolean {
     const isLoggedInString = sessionStorage.getItem(this.isLoggedIn);
     return isLoggedInString ? JSON.parse(isLoggedInString) : false;
   }
 
-  
-
   logout() {
     this.removeToken();
     this.setIsLoggedIn(false);
   }
-
   isUser() {
     const jwtToken = this.getToken('token');
     if (!jwtToken) {
@@ -79,3 +81,4 @@ export class UserService {
     return isLoggedInString ? JSON.parse(isLoggedInString) : false;
   }
 }
+

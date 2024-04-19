@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit{
   }
   users=new User()
   onRegisterSubmit(){
-    this.users.role='Client'
+    this.users.Role='Client'
     this.userservice.registerUser(this.users).subscribe(response=>{
       console.log(response);
     })

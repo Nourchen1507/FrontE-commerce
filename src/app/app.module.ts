@@ -11,8 +11,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
-import { AuthInterceptor } from './auth/auth.interceptor';
+
 import { ClientdashComponent } from './clientdash/clientdash.component';
+import { DhashboardComponent } from './dhashboard/dhashboard.component';
+import { IndexComponent } from './dhashboard/index/index.component';
+import { ListusrComponent } from './dhashboard/listusr/listusr.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { ClientdashComponent } from './clientdash/clientdash.component';
     SigninComponent,
     RegisterComponent,
     ClientdashComponent,
+    DhashboardComponent,
+    IndexComponent,
+    ListusrComponent,
  
 
   ],

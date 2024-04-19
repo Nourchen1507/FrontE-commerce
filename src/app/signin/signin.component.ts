@@ -36,27 +36,27 @@ export class SigninComponent implements AfterViewInit {
 
   user = new User()
   onRegisterSubmit() {
-    this.user.role = 'client'
+    this.user.Role = 'client'
     this.userservice.registerUser(this.user).subscribe(response => {
       console.log(response);
     })
   }
   login() {
-    this.userservice .login(this.user).subscribe(data => {
-      this.userservice .saveToken('email-user', data.user.email)
+      this.userservice.login(this.user).subscribe(data => {
+      this.userservice.saveToken('Email', data.Email)
 
-      this.userservice .saveToken('id-user', data.user.id)
+      this.userservice.saveToken('Id', data.Id)
 
-      this.userservice .saveToken('token', data.token)
+      this.userservice.saveToken('access_token', data.token)
     
 
-      if (data.user.role === 'admin') {
+      if (data.role === 'admin') {
         this.router.navigate(['/admin']);
-        this.userservice.saveToken('role', data.user.role)
+        this.userservice.saveToken('role', data.role)
         this.userservice.setIsLoggedInadmin(true)
 
-      } else if (data.user.role === 'client') {
-        this.userservice.saveToken('role', data.user.role)
+      } else if (data.role === 'client') {
+        this.userservice.saveToken('role', data.role)
         this.userservice.setIsLoggedIn(true)
         this.router.navigate(['/client']);
       }

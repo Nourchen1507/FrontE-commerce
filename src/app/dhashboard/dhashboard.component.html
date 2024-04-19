@@ -1,0 +1,101 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  /* Custom styles go here */
+
+  /* Navbar */
+
+
+  .toggle-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  /* Sidebar */
+  #sidebar {
+    background-color: #222;
+    color: #fff;
+  }
+  .logo {
+    text-align: center;
+    bottom: 50px;
+  }
+  .logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+
+  .nav.flex-column .label {
+    color: #aaa;
+    font-size: 0.8rem;
+
+  }
+
+  .nav.flex-column .nav-link {
+    color: #ccc;
+  }
+  .nav.flex-column .nav-link:hover {
+    color: #fff;
+  }
+</style>
+
+<body>
+
+<div class="container-fluid">
+<div class="row">
+  <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar" >
+    <div class="position-sticky">
+      <div class="logo"><a href="index.html"><span>E-shopper</span></a></div>
+      <div class="profile">
+        <img src="https://img.freepik.com/premium-photo/photo-character-cartoon-anime_963769-1747.jpg?w=360" alt="profile_picture">
+        <h6>Hello,Nourchen</h6>
+        <p>Admin</p>
+      </div>
+      <ul class="nav flex-column">
+
+
+        <li class="label">Main</li>
+        <li><a routerLink="index" class="sidebar-sub-toggle" ><i class="ti-home"></i> <span class="sidebar-text">Dashboard</span></a></li>
+        <li class="label" >Users</li>
+        <li><a routerLink="adduser"><i class="fas fa-user-plus"></i> <span class="sidebar-text">Ajouter</span></a></li>
+        <li><a routerLink="listeuser"><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+        <!-- ... Other links ... -->
+        <li class="label" >Article</li>
+        <li><a routerLink="addarticle" ><i class="fas fa-user-plus"></i> <span class="sidebar-text">Ajouter</span></a></li>
+        <li><a  routerLink="listarticle" ><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+
+        <li class="label" >Supplement</li>
+        <li><a routerLink="addsupp" ><i class="fas fa-user-plus"></i> <span class="sidebar-text">Ajouter</span></a></li>
+        <li><a routerLink="listesupp" ><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+
+        <li class="label" >Ingrédient</li>
+        <li><a routerLink="addingre" ><i class="fas fa-user-plus"></i> <span class="sidebar-text">Ajouter</span></a></li>
+        <li><a routerLink="listeingre" ><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+
+        <li class="label" >Commande</li>
+        <li><a routerLink="listecommande" ><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+        <li class="label" >Reservation</li>
+        <li><a routerLink="listereservation" ><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+        <li class="label" >Reclamation</li>
+        <li><a routerLink="listereclamation" ><i class="fas fa-list"></i> <span class="sidebar-text">Liste</span></a></li>
+    </ul>
+    </div>
+  </nav>
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content" >
+    <router-outlet></router-outlet>
+  </main>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
