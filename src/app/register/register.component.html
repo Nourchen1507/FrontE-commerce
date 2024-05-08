@@ -1,5 +1,6 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="90">
 
+
     <!--login start-->
     <section class="p-lg-0 login-sec">
         <div class="container-fluid">
@@ -22,73 +23,85 @@
                         </div>
   
                         <!--form-->
-                        <form #ng="">
+                        <form #ng="ngForm">
                            <div class="row">
                                <div class="col-12 col-lg-6">
-                                   <input class="form-control" type="text" name="nom" >
-                                   <div  class="text-danger">
-                                    <span >Le nom est obligatoire.</span>
+                                   <input class="form-control" type="text" name="nom" [(ngModel)]="user.firstName" placeholder="Nom" #nom="ngModel" required>
+                                   <div *ngIf="nom.touched && nom.invalid" class="text-danger">
+                                    <span *ngIf="nom.errors?.['required']">Le nom est obligatoire.</span>
                                 </div>
                                </div>
                                <div class="col-12 col-lg-6">
-                                <input class="form-control" type="text" name="prenom" >
-                                <div  class="text-danger">
-                                  <span >Le prenom est obligatoire.</span>
+                                <input class="form-control" type="text" name="prenom" [(ngModel)]="user.lastName" #prenom="ngModel" placeholder="Prenom" required>
+                                <div *ngIf="prenom.touched && prenom.invalid" class="text-danger">
+                                  <span *ngIf="prenom.errors?.['required']">Le prenom est obligatoire.</span>
                               </div>
                             </div>
                             <div class="col-12 col-lg-6">
-                              <input class="form-control" type="text" name="num" >
-                              <div  class="text-danger">
-                                <span >Le num est obligatoire.</span>
+                              <input class="form-control" type="text" name="num" [(ngModel)]="user.phone" placeholder="phone" #num="ngModel" required>
+                              <div *ngIf="num.touched && num.invalid" class="text-danger">
+                                <span *ngIf="num.errors?.['required']">Le num est obligatoire.</span>
                             </div>
                           </div>
                                <div class="col-12 col-lg-6">
-                                   <input class="form-control" type="text" name="localisation" >
-                                   <div  class="text-danger">
-                                    <span >Le localisation est obligatoire.</span>
+                                   <input class="form-control" type="text" name="localisation" [(ngModel)]="user.localisation" #localisation="ngModel" placeholder="localisation" required>
+                                   <div *ngIf="localisation.touched && localisation.invalid" class="text-danger">
+                                    <span *ngIf="localisation.errors?.['required']">Le localisation est obligatoire.</span>
                                 </div>
                                </div>
                                <div class="col-12">
-                                   <input class="form-control" type="email" name="email">
-                                   <div  class="text-danger">
-                                    <span>Le email est obligatoire.</span>
+                                   <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="E-mail Address" #email="ngModel" required>
+                                   <div *ngIf="email.touched && email.invalid" class="text-danger">
+                                    <span *ngIf="email.errors?.['required']">Le email est obligatoire.</span>
                                 </div>
   
                                </div>
                                <div class="col-12">
-                                <input class="form-control" type="text" name="email">
-                                <div  class="text-danger">
-                                  <span >Le adresse est obligatoire.</span>
+                                <input class="form-control" type="text" name="Adresse" [(ngModel)]="user.addresse"  #adresse="ngModel" placeholder="user Address" required>
+                                <div *ngIf="adresse.touched && adresse.invalid" class="text-danger">
+                                  <span *ngIf="adresse.errors?.['required']">Le adresse est obligatoire.</span>
                               </div>
                             </div>
                             <div class="col-12">
-                             <input type="hidden"  class="form-control" name="role" >
-                              <div >
-                                <span >Le role est obligatoire.</span>
+                             <input type="hidden"  class="form-control" name="role" [(ngModel)]="user.role" #role="ngModel" required>
+                              <div *ngIf="role.touched && role.invalid" class="text-danger">
+                                <span *ngIf="role.errors?.['required']">Le role est obligatoire.</span>
                             </div>
                             </div>
                                <div class="col-12">
-                                   <input class="form-control" type="text" name="password" >
-                                   <div class="text-danger">
-                                    <span >Le nom est obligatoire.</span>
-                                    <span >Le mot de passe doit avoir au moins 8 caractères..</span>
+                                   <input class="form-control" type="text" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="Password" required minlength="8">
+                                   <div *ngIf="password.touched && password.invalid" class="text-danger">
+                                    <span *ngIf="password.errors?.['required']">Le nom est obligatoire.</span>
+                                    <span *ngIf="password.errors?.['minlength']">Le mot de passe doit avoir au moins 8 caractères..</span>
   
                                 </div>
   
                                </div>
                            </div>
-                           <div class="form-button">
-                            <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn"  (click)="onRegisterSubmit()">Register</button><a routerLink="/lgin" class="text">Already registered! Login here?</a>
-                        </div>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="btn btn-large rounded-pill main-btn" [disabled]="ng.invalid" (click)="onRegisterSubmit()">Register</button>
+                                <a routerLink="/login" class="text">Already registered! Login here?</a>
+                            </div>
                         </form>
                     </div>
-                  
-                </div>
+                    <!--bottom nav start-->
+                    <!-- <div class="bottom-mini-nav">
+                        <div class="row no-gutters">
+                            <div class="col-12 col-lg-12 simple-navbar d-flex align-items-center justify-content-start">
+                                <nav class="navbar">
+                                    <a class="nav-link link" href="restaurant-listing.html">Browse Food</a>
+                                    <a class="nav-link link" href="../index-food-delivery.html#app-sec">Download App</a>
+                                    <a class="nav-link link" href="../index-food-delivery.html#about-sec">About Us</a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--bottom nav end-->
                 <div class="col-12 col-lg-6 p-0 order-1 order-lg-2 login-side-background" style="background-image: url('https://img.freepik.com/photos-gratuite/petites-entreprises-proprietaires-pme-femmes-entrepreneurs-travaillant-boite-reception-verifier-commande-ligne_74952-2792.jpg?w=740&t=st=1711633006~exp=1711633606~hmac=9090f05bab64a8e8ed64173dcb179fcdd1725d9f562e8d691ea6e83603179739');">
                     <!--Feature Image Half-->
                 </div>
                 </div>
-  
+  </div>
         </div>
     </section>
   

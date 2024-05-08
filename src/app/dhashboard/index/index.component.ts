@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import Chart from 'chart.js/auto';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-index',
@@ -13,7 +15,7 @@ export class IndexComponent implements OnInit {
 
   chart: any;
 
-  constructor() { }
+  constructor(private user:UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.createChart();
@@ -141,5 +143,9 @@ export class IndexComponent implements OnInit {
 
       this.chart.update();
     }, 2000); // Update every 2 seconds
+  }
+  logout(){
+    this.user.logout()
+    this.router.navigate(['/login'])
   }
 }

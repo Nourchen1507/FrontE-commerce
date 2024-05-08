@@ -16,7 +16,13 @@ import { ClientdashComponent } from './clientdash/clientdash.component';
 import { DhashboardComponent } from './dhashboard/dhashboard.component';
 import { IndexComponent } from './dhashboard/index/index.component';
 import { ListusrComponent } from './dhashboard/listusr/listusr.component';
-
+import { AdduserComponent } from './dhashboard/adduser/adduser.component';
+import { ListcommandeComponent } from './dhashboard/listcommande/listcommande.component';
+import { AccountComponent } from './account/account.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ListarticleComponent } from './dhashboard/listarticle/listarticle.component';
+import { AddarticleComponent } from './dhashboard/addarticle/addarticle.component';
+import { CheckComponent } from './check/check.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,14 @@ import { ListusrComponent } from './dhashboard/listusr/listusr.component';
     DhashboardComponent,
     IndexComponent,
     ListusrComponent,
+    AdduserComponent,
+    ListcommandeComponent,
+    AccountComponent,
+    ResetpasswordComponent,
+    ListarticleComponent,
+    AddarticleComponent,
+    CheckComponent,
+  
  
 
   ],
@@ -38,8 +52,9 @@ import { ListusrComponent } from './dhashboard/listusr/listusr.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+
     
-    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

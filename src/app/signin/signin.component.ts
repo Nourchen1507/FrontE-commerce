@@ -27,39 +27,45 @@ export class SigninComponent implements AfterViewInit {
     });
   }
 
-  users = new User()
 
-  constructor(private userservice : UserService,private router: Router) { }
+  constructor(private api: UserService,private router: Router) { }
+
+  user = new User();
 
 
 
-
-  user = new User()
   onRegisterSubmit() {
-    this.user.Role = 'client'
-    this.userservice.registerUser(this.user).subscribe(response => {
+    this.user.role = 'client'
+    this.api.registerUser(this.user).subscribe(response => {
       console.log(response);
     })
   }
+  
   login() {
-      this.userservice.login(this.user).subscribe(data => {
-      this.userservice.saveToken('Email', data.Email)
+    this.api.login(this.user.email,this.user.password).subscribe(data => {
+     console.log(data)
+      this.api.saveToken('token', data.token)
+      this.api.saveToken('email-user', data.email)
+      this.api.saveToken('userId', data.userId)
+      //this.router.navigate(['/client']);
 
-      this.userservice.saveToken('Id', data.Id)
-
-      this.userservice.saveToken('access_token', data.token)
+      console.log("test aa")
+      console.log(data.role)
     
-
-      if (data.role === 'admin') {
+      if (data.role === 'Admin') {
+        console.log(data.role);
         this.router.navigate(['/admin']);
-        this.userservice.saveToken('role', data.role)
-        this.userservice.setIsLoggedInadmin(true)
+        this.api.saveToken('role', data.role)
+        this.api.setIsLoggedInadmin(true)
 
-      } else if (data.role === 'client') {
-        this.userservice.saveToken('role', data.role)
-        this.userservice.setIsLoggedIn(true)
+      } else if (data.role === 'Client') {
+        this.api.saveToken('role', data.role)
+        this.api.setIsLoggedIn(true)
         this.router.navigate(['/client']);
+      }else {
+        console.log("test finished")
       }
+
     },
     (error: any) => {
       // Handle login error
@@ -67,9 +73,6 @@ export class SigninComponent implements AfterViewInit {
     }
   );
 }
-
 }
 
-
-
-
+//ta7et baad ma nsetii token methode

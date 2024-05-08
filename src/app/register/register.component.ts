@@ -14,10 +14,13 @@ export class RegisterComponent implements OnInit{
   ngOnInit(){
     console.log("this is register component");
   }
-  users=new User()
+
+
+
+  user=new User()
   onRegisterSubmit(){
-    this.users.Role='Client'
-    this.userservice.registerUser(this.users).subscribe(response=>{
+    this.user.role='Client'
+    this.userservice.registerUser(this.user).subscribe(response=>{
       console.log(response);
     })
   }

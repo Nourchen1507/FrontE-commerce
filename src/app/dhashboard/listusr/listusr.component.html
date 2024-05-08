@@ -17,8 +17,8 @@
                       <div class="page-header">
                           <div class="page-title">
                               <ol class="breadcrumb">
-                                  <li class="breadcrumb-item"><a routerLink="index">Dashboard</a></li>
-                                  <li class="breadcrumb-item active">Liste</li>
+                                  <li class="breadcrumb-item"><a routerLink="Users">Dashboard</a></li>
+                                  <li class="breadcrumb-item active">Liste Users </li>
                               </ol>
                           </div>
                       </div>
@@ -32,14 +32,14 @@
                           <div class="card " >
                               <div class="card-body" >
                                   <div class="form-validation" >
-                                    <table class="table table-striped table-inverse table-responsive p-2 border-0"  >
+                                    <table class="table table-striped table-inverse table-responsive p-2 border-0" *ngIf="users" >
                                       <thead class="thead-inverse">
                                         <tr>
                                           <th>id</th>
                                           <th>nom</th>
                                           <th>prenom</th>
                                           <th>email</th>
-                                          <th>localisation</th>
+                        
                                           <th>adresse</th>
                                           <th>number</th>
                                           <th>role</th>
@@ -47,15 +47,14 @@
                                         </tr>
                                       </thead>
                                       <tbody>
-                                        <tr *ngFor="let x of liste">
-                                          <td>{{ x.Id }}</td>
-                                          <td>{{ x.Firstname }}</td>
-                                          <td>{{ x.Lastname }}</td>
-                                          <td >{{ x.Email }}</td>
-                                    
-                                          <td>{{ x.adresse }}</td>
-                                          <td>{{ x.Phone }}</td>
-                                          <td>{{ x.Role }}</td>
+                                        <tr *ngFor="let user of users ">
+                                          <td>{{ user.id }}</td>
+                                          <td>{{ user.firstName }}</td>
+                                          <td>{{ user.lastName }}</td>
+                                          <td >{{ user.email }}</td>
+                                          <td>{{ user.addresse }}</td>
+                                          <td>{{ user.phone }}</td>
+                                          <td>{{ user.role }}</td>
                                           <td>
                                             <button class="btn btn-primary" >Edit</button>
                                             <button class="btn btn-danger" >Delete</button>

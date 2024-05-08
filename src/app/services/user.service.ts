@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../Model/User';
+import axios from 'axios';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -11,17 +13,38 @@ import { environment } from 'src/environments/environment';
 export class UserService {
 
   private url = "Users"
+  baseApiUrl : string = environment.apiUrl
 
   constructor(private http: HttpClient) {}
 
 
 
-  login(user: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Auth/login`, user, {responseType:"text"});
+  login(email:any, password :any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/Auth/login`,{email,password});
   }
+
+  deleteUser(email: string, id: string): Observable<any> {
+    const accessToken = this.getToken('token');
+  
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + accessToken });
+    const options = { headers: headers };
+    const requestBody = { email: email, iduser: id };
+  
+    return this.http.delete<any>(`${environment.apiUrl}/${id}`, { ...options, body: requestBody });
+  }
+  
+ 
   getuser(): Observable<any> {
-    const data = {Id:''}
-    return this.http.post(`${environment.apiUrl}/${this.url}`, data);
+    const data = {id:''}
+    return this.http.post(`${environment.apiUrl}/${this.url}`,data);
+  }
+  
+  getUsers(id: any): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/${this.url}/${id}`);
+  }
+  
+  GetAllUsers(): Observable<User[]>{
+   return this.http.get<User[]>(this.baseApiUrl + '/users')
   }
 
   registerUser(user: any): Observable<any> {
@@ -40,11 +63,6 @@ export class UserService {
   removeToken() {
     localStorage.removeItem('token');
   }
- 
- 
-  
- 
-  
   isLoggedIn="false"
   setIsLoggedIn(isLoggedIn: boolean) {
     sessionStorage.setItem(this.isLoggedIn, isLoggedIn.toString());

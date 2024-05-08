@@ -1,29 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/Model/User';
 import { UserService } from 'src/app/services/user.service';
+
+
+
 
 @Component({
   selector: 'app-listusr',
   templateUrl: './listusr.component.html',
-  styleUrls: ['./listusr.component.css']
+  styleUrls: ['./listusr.component.css',
+  '../../../assets/css/bootstrap.min.css']
 })
 
 
 export class ListusrComponent implements OnInit {
   
-  
-  constructor(private service:UserService){}
+  users : User[] = [];
+
+  constructor(private userservice:UserService){}
   
   liste:any[]=[]
 
   ngOnInit(): void {
 
-    this.service.getuser().subscribe(data=>{
+   this.userservice.GetAllUsers()
+   .subscribe({
+        next: (users) => {
 
-      console.log(data.supplements);
+         this.users = users;
 
-     this.liste=data
-     console.log(this.liste);
+        }, error:(response) => {
 
-    })
-}
+          console.log(response);
+          
+        }
+   });
+
+  }
 }

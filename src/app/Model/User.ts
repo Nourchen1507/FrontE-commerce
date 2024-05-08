@@ -1,11 +1,13 @@
 export class User {
-    Id!:string;
-    FirstName!: string;
-    LastName!:string;
-    Email!: string;
-    Role!: string;
-    Password!: string;
-    Addresse!: string;
-    Phone!: string;
+    id!:string;
+    firstName!: string;
+    lastName!:string;
+    email!: string;
+    role!: string;
+    localisation!:string;
+    password!: string;
+    addresse!: string;
+    CIN!: string;
+    phone!:string;
     
   }
