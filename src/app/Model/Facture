@@ -1,0 +1,13 @@
+export class Facture {
+  id!: number;
+  montant!: number;
+  datefacture!: Date;
+  currency!:string;
+  montantht!: number;
+  montantttc!: number;
+   orderId!: number;
+  pay_status!: string;
+  pay_ref!: string;
+  pay_gateway!: string;
+  token!:string
+}

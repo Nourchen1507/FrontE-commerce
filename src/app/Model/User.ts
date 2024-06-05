@@ -5,8 +5,10 @@ export class User {
     email!: string;
     role!: string;
     localisation!:string;
+    residenceName!:string
     password!: string;
     addresse!: string;
+    addresseId!: string;
     CIN!: string;
     phone!:string;
     

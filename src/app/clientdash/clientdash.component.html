@@ -5014,30 +5014,29 @@
                   </div>
                 </a>
                 <ul
-                  class="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <li>
-                    <a
-                      class="dropdown-item"
-                     routerLink="/account"
-                      >Profile</a
-                    >
-                  </li>
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                   routerLink="/account"
+                    >Profile</a
+                  >
+                </li>
 
-                  <li><hr class="dropdown-divider" /></li>
+                <li><hr class="dropdown-divider" /></li>
 
-                  <li>
-                    <a
-                      class="dropdown-item"
-                    role="button"
-                    (click)=" logout()"
-                      >Logout</a
-                    >
-                  </li>
-                </ul>
-              </li>
-             
+                <li>
+                  <a
+                    class="dropdown-item"
+                  role="button"
+                  (click)=" logout()"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
             </ul>
           </div>
         </div>
@@ -5287,7 +5286,7 @@
                   </div>
                   <div class="swiper-slide">
                     <div class="card category-menu">
-                      <a role="button" class="bg-transparent" (click)="setCategory('categoryName',true)" >
+                      <a role="button" class="bg-transparent" (click)="setCategory('AirPodsPro',true)" >
                         <div class="card-body">
                           <div class="text-center">
                             <img
@@ -5366,7 +5365,7 @@
 
                   <div class="swiper-slide">
                     <div class="card category-menu">
-                      <a role="button" class="bg-transparent" (click)="setCategory('categoryName',true)" >
+                      <a role="button" class="bg-transparent" (click)="setCategory('Portables',true)" >
                         <div class="card-body">
                           <div class="text-center">
                             <img
@@ -5405,7 +5404,7 @@
                   </div>
                   <div class="swiper-slide">
                     <div class="card category-menu">
-                      <a role="button" class="bg-transparent" (click)="setCategory('categoryName',true)" >
+                      <a role="button" class="bg-transparent" (click)="setCategory('Souris ',true)" >
                         <div class="card-body">
                           <div class="text-center">
                             <img
@@ -5450,7 +5449,7 @@
                 <div class="card-header border-0" >
                   <div class="d-flex justify-content-between align-items-center">
                     <h3>Menu</h3>
-                    <a (click)="setCategory('PCPortables',true)" class="text-dark d-flex"
+                    <a (click)="setCategory('PCPortables',true)"  (click)="setCategory('Ventilateur',true)" (click)="setCategory('Souris',true)" class="text-dark d-flex"
                       >Clear All
                       <svg
                         width="24"
@@ -5473,39 +5472,39 @@
                   </div>
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4">
-                  <div class="col" >
+                  <div class="col" *ngFor="let x of liste; let i = index">
                     <div class="card card-white dish-card profile-img mb-0 index">
                       <div class="profile-img21">
                         <img
-                         
-                          class="img-fluid rounded-pill avatar-170 blur-shadow position-bottom"
-                          alt="profile-image"
-                        />
-                        <img
-                        
-                
-                          class="img-fluid rounded-pill avatar-170"
-                          alt="profile-image"
-                        />
+                        src="../../assets/img/layouts/21.png"
+                        class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
+                        alt="profile-image"
+                      />
+                      <img
+                      src="../../assets/img/layouts/19.png"
+                      class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
+                      alt="profile-image"
+                    />
                       </div>
                       <div class="card-body menu-image">
                         <h6 class="heading-title fw-bolder mt-4 mb-0">
-                         
+                          {{x.name}}
                         </h6>
                         <div class="card-rating stars-ratings">
-                        
+                          {{x.description}}
                         </div>
 
                         <div class="d-flex justify-content-between mt-3">
                           <div class="d-flex align-items-center">
                             <span class="text-primary fw-bolder me-2">
+                              {{x.price}}
                               
                             </span>
                             <small class="text-decoration-line-through">
                               $8.49
                             </small>
                           </div>
-                          <a role="button" class="bg-transparent" id="addtocart"  >
+                          <a role="button" class="bg-transparent" id="addtocart" (click)="Cart(x)" >
                             <div class="page-wrapper">
 
                                 <svg
@@ -5625,12 +5624,12 @@
                         <div class="d-flex profile-img1">
                           <div class="profile-img31">
                             <img
-                             
+                              src="../../assets/img/layouts/19.png"
                               class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
                               alt="profile-image"
                             />
                             <img
-                             
+                              src="../../assets/img/layouts/21.png"
                               class="img-fluid rounded-pill avatar-130"
                               alt="profile-image"
                             />
@@ -5759,10 +5758,10 @@
                               <small>Top of the week</small>
                             </span>
                             <h6 class="mb-1 mt-3 heading-title fw-bolder">
-                              Italian Salad
+                              Accessoires
                             </h6>
                             <p class="mt-2 mb-0 pb-4 iq-calories">
-                              60 Calories
+                             Remise Sur les Souris
                             </p>
                             <p>4 persons</p>
                             <div class="d-flex mt-2">
@@ -5808,15 +5807,15 @@
                         <div class="d-flex profile-img1">
                           <div class="profile-img31">
                             <img
-                             
-                              class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
-                              alt="profile-image"
-                            />
+                            src="../../assets/img/layouts/21.png"
+                            class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
+                            alt="profile-image"
+                          />
                             <img
-                             
-                              class="img-fluid rounded-pill avatar-130"
-                              alt="profile-image"
-                            />
+                            src="../../assets/img/layouts/21.png"
+                            class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
+                            alt="profile-image"
+                          />
                           </div>
                           <div>
                             <span class="text-primary">
@@ -5942,14 +5941,14 @@
                               <small>Top of the week</small>
                             </span>
                             <h6 class="mb-1 mt-3 heading-title fw-bolder">
-                              Italian Salad
+                               Remise Sur les Tapis des Souris
                             </h6>
                             <p class="mt-2 mb-0 pb-4 iq-calories">
-                              60 Calories
+                             Tous Les Type
                             </p>
-                            <p>4 persons</p>
+                         
                             <div class="d-flex mt-2">
-                              <span class="text-primary me-4">$7.49</span>
+                              <span class="text-primary me-4">$7</span>
                               <svg
                                 width="24"
                                 height="24"
@@ -5993,15 +5992,15 @@
                         <div class="d-flex profile-img1">
                           <div class="profile-img31">
                             <img
-                              
+                              src="../../assets/img/layouts/3.png"
                               class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
                               alt="profile-image"
                             />
                             <img
-                            
-                              class="img-fluid rounded-pill avatar-130"
-                              alt="profile-image"
-                            />
+                            src="../../assets/img/layouts/3.png"
+                            class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
+                            alt="profile-image"
+                          />
                           </div>
                           <div>
                             <span class="text-primary">
@@ -6127,14 +6126,14 @@
                               <small>Top of the day</small>
                             </span>
                             <h6 class="mb-1 mt-3 heading-title fw-bolder">
-                              Italian Salad
+                             Les Ventilateurs
                             </h6>
                             <p class="mt-2 mb-0 pb-4 iq-calories">
-                              60 Calories
+                             Promotion 
                             </p>
-                            <p>4 persons</p>
+                            <p>Remise</p>
                             <div class="d-flex mt-2">
-                              <span class="text-primary me-4">$7.49</span>
+                              <span class="text-primary me-4">$10</span>
                               <svg
                                 width="24"
                                 height="24"
@@ -6175,13 +6174,9 @@
                       <div class="card-body">
                         <div class="d-flex profile-img1">
                           <div class="profile-img31">
+                           
                             <img
-                              src="../../assets/img/layouts/20.png"
-                              class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
-                              alt="profile-image"
-                            />
-                            <img
-                              src="../../assets/img/layouts/20.png"
+                              src="../../assets/img/layouts/22.png"
                               class="img-fluid rounded-pill avatar-130"
                               alt="profile-image"
                             />
@@ -6310,14 +6305,14 @@
                               <small>Top of the month</small>
                             </span>
                             <h6 class="mb-1 mt-3 heading-title fw-bolder">
-                              Italian Salad
+                              Accesoires
                             </h6>
                             <p class="mt-2 mb-0 pb-4 iq-calories">
-                              60 Calories
+                             Remises Sur Les Sac Cadeaux
                             </p>
-                            <p>4 persons</p>
+                            <p>Tous Les articles Disponible</p>
                             <div class="d-flex mt-2">
-                              <span class="text-primary me-4">$7.49</span>
+                              <span class="text-primary me-4">$50</span>
                               <svg
                                 width="24"
                                 height="24"
@@ -6361,13 +6356,9 @@
                       <div class="card-body">
                         <div class="d-flex profile-img1">
                           <div class="profile-img31">
+                           
                             <img
-                              src="../../assets/img/layouts/14.png"
-                              class="img-fluid rounded-pill avatar-130 blur-shadow position-start"
-                              alt="profile-image"
-                            />
-                            <img
-                              src="../../assets/img/layouts/14.png"
+                              src="../../assets/img/layouts/3.png"
                               class="img-fluid rounded-pill avatar-130"
                               alt="profile-image"
                             />
@@ -6496,14 +6487,14 @@
                               <small>Top of the day</small>
                             </span>
                             <h6 class="mb-1 mt-3 heading-title fw-bolder">
-                              Italian Salad
+                              Les Casques
                             </h6>
                             <p class="mt-2 mb-0 pb-4 iq-calories">
-                              60 Calories
+                             Encore Promotion
                             </p>
                             <p>4 persons</p>
                             <div class="d-flex mt-2">
-                              <span class="text-primary me-4">$7.49</span>
+                              <span class="text-primary me-4">$15</span>
                               <svg
                                 width="24"
                                 height="24"
@@ -6553,20 +6544,20 @@
       </div>
     </div>
 
-    <button class="back-to-top" >Top</button>
+  
+    <button class="back-to-top" [class.show]="showBackToTop" (click)="scrollToCategory()">Top</button>
 
 
-    <div id="cart" class="cart" >
-      <a  role="button" class="bg-transparent" routerLink="/admin">
+    <div id="cart" class="cart" [attr.data-totalitems]="cartTotal">
+      <a *ngIf="cartTotal !== 0 && cartTotal !== null" role="button" class="bg-transparent" routerLink="/check">
         <i class="fas fa-shopping-cart"></i>
       </a>
-      <span>
-        <a  role="button" class="bg-transparent" >
+      <span *ngIf="cartTotal === 0 || cartTotal === null">
+        <a  role="button" class="bg-transparent" (click)="showAlert()">
           <i class="fas fa-shopping-cart"></i>
         </a>
       </span>
     </div>
-
 
     <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">

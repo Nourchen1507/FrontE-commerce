@@ -52,8 +52,8 @@
                                       <img *ngIf="imageUrl" [src]="imageUrl" alt="Selected Image">
   
                                       <label for="imageUrl">Image:</label>
-                                      <textarea type="number" name="imageUrl" id="imageUrl" [(ngModel)]="article.imageUrl" class="form-control" required></textarea><br>
-                                      <!-- <input type="file" name="image" id="image" (change)="onFileSelected($event)" class="form-control" accept="image/*" required><br> -->
+                                      <textarea type="file" name="imageUrl" id="imageUrl" [(ngModel)]="article.imageUrl" class="form-control" required></textarea><br>
+                                     <input type="file" name="imageUrl" id="imageUrl" (change)="onFileSelected($event)" class="form-control" accept="image/*" required><br> 
                               <div class="col-lg-12"> 
   
                                 <button type="submit" class="btn btn-success" (click)="onSubmit()">Add Article</button>

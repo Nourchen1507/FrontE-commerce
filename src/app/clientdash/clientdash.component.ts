@@ -56,6 +56,7 @@ export class ClientdashComponent implements OnInit {
       this.selectedArticle = article; // Store the selected article information
       // Open the modal
     }
+
     check=false
   toggleSelected(idsupplement: number, checked: boolean) {
     console.log(idsupplement,checked);
@@ -74,6 +75,7 @@ export class ClientdashComponent implements OnInit {
       }
     }
   }
+
   cartTotal: number = 0;
   Cart(x: Product): void {
     const existingItem = this.Listetobuy.find(item => item.id === x.id);

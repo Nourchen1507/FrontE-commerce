@@ -97,17 +97,6 @@ background-size: cover;">
                   aria-selected="false"
                   ><i class="lni lni-fresh-juice mr-1"></i> My Orders</a
                 >
-                <li class="badge bg-primary py-2 me-2 nav-item">
-                  <a
-                  class="nav-link"
-                  id="address-tab"
-                  data-toggle="tab"
-                  href="#address"
-                  role="tab"
-                  aria-controls="address"
-                  aria-selected="false"
-                  ><i class="lni lni-fresh-juice mr-1"></i> My Address</a
-                >
                 </li>
                 <li class="badge bg-primary py-2 me-2 nav-item">
                   <a
@@ -151,17 +140,12 @@ background-size: cover;">
               </td>
               <td style="border: none">{{ x.email }}</td>
             </tr>
+           
             <tr>
               <td style="border: none">
-                <i class="fas fa-map-marker"></i> Adresse :
+                <i class="fas fa-user"></i> Localisation:
               </td>
-              <td style="border: none">{{ x.addresse}}</td>
-            </tr>
-            <tr>
-              <td style="border: none">
-                <i class="fas fa-user"></i> Role :
-              </td>
-              <td style="border: none">{{ x.role }}</td>
+              <td style="border: none">{{ x.localisation }}</td>
             </tr>
             <tr>
               <td style="border: none">
@@ -169,22 +153,16 @@ background-size: cover;">
               </td>
               <td style="border: none">{{ x.phone }}</td>
             </tr>
-            <tr>
-              <td style="border: none">
-                <i class="fas fa-map-marked"></i> Localisation :
-              </td>
-              <td style="border: none">{{ x.localisation }}</td>
-            </tr>
+           
             <tr>
               <td style="border: none">
                 <button
-                  type="submit"
-                  class="btn main-btn rounded-pill contact_btn"
-                 
-        
-                >
-                  Edit
-                </button>
+                type="submit"
+                class="btn main-btn rounded-pill contact_btn"
+                (click)="edit(x.id,true)"
+              >
+                Edit
+              </button>
               </td>
            
             </tr>
@@ -200,45 +178,39 @@ background-size: cover;">
         >
           <table class="table" style="border: none">
             <tr>
-              <td style="border: none" >email :</td>
-              <input type="hidden" name="iduser" class="form-control" [(ngModel)]="user.id">
+              <td style="border: none" > E-mail :</td>
+              <input type="hidden" name="id" class="form-control" [(ngModel)]="user.id">
               <td style="border: none" ><input type="text" name="email" class="form-control" [(ngModel)]="user.email"></td>
             </tr>
             <tr>
-              <td style="border: none" >nom :</td>
+              <td style="border: none" >Votre Nom  :</td>
               <td style="border: none" ><input type="text" class="form-control" name="nom"  [(ngModel)]="user.firstName"></td>
             </tr>
             <tr>
-              <td style="border: none" >prenom :</td>
+              <td style="border: none" >Votre Prenom :</td>
               <td style="border: none" ><input type="text" class="form-control" name="prenom"  [(ngModel)]="user.lastName"></td>
             </tr>
             <tr>
-              <td style="border: none" >number :</td>
+              <td style="border: none" > Votre Telephone:</td>
               <td style="border: none" ><input type="text" class="form-control" name="num"  [(ngModel)]="user.phone"></td>
             </tr>
-            <tr>
-              <td style="border: none" >adresse :</td>
-              <td style="border: none" ><input type="text" class="form-control" name="adresse" [(ngModel)]="user.localisation"></td>
-            </tr>
-            <input type="hidden" class="form-control" name="role" [(ngModel)]="user.role">
-            <tr>
-              <td style="border: none" >localisation :</td>
-              <td style="border: none" ><input type="text" class="form-control" name="localisation" [(ngModel)]="user.localisation"></td>
 
+            <tr>
+              <td style="border: none" ><Li></Li>Localisation :</td>
+              <td style="border: none" ><input type="text" class="form-control" name="localisation" [(ngModel)]="user.localisation"></td>
             </tr>
             <tr>
               <td style="border: none" >Password :</td>
               <td style="border: none" ><input type="password" class="form-control" name="password" [(ngModel)]="user.password"></td>
-
             </tr>
             <tr>
               <button
-                type="submit"
-                class="main-btn rounded-pill contact_btn"
-              
-              >
-                update
-              </button>
+              type="submit"
+              class="main-btn rounded-pill contact_btn"
+              (click)="update()"
+            >
+              update
+            </button>
               <button
               type="submit"
               class="main-btn rounded-pill contact_btn" (click)="close(false)"
@@ -269,9 +241,7 @@ background-size: cover;">
                 <th scope="col">
                   <i class="fas fa-sticky-note"></i> Total Amount
                 </th>
-                <th scope="col">
-                  <i class="fas fa-user"></i> User ID
-                </th>
+                
                 <th scope="col">
                   <i class="fas fa-tasks"></i> Order Items
                 </th>
@@ -283,7 +253,6 @@ background-size: cover;">
                 <td>{{ orders.orderStatus }}</td>
                 <td>{{ orders.orderDate | date: 'dd/MM/yyyy' }}</td>
                 <td>{{ orders.totalAmount | currency:'USD':true }}</td>
-                <td>{{ orders.userId }}</td>
                 <td>
                   <ul>
                     <li *ngFor="let item of orders.orderItems">
@@ -334,20 +303,20 @@ background-size: cover;">
     </tr>
     <tr>
       <button
-        type="submit"
-        class="btn main-btn "
-        data-bs-toggle="modal" data-bs-target="#exampleModal2"
-        
-      >
-        edit
-      </button>
-      <button
       type="submit"
-      class="btn btn-dark "
-     
+      class="btn main-btn "
+      data-bs-toggle="modal" data-bs-target="#exampleModal2"
+      (click)="editadresse(y.id)"
     >
-      delete
+      edit
     </button>
+    <button
+    type="submit"
+    class="btn btn-dark "
+    (click)="deleteaddress(y.id)"
+  >
+    delete
+  </button>
     </tr>
   </table>
 
@@ -483,7 +452,7 @@ background-size: cover;">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-       
+        <button type="button" class="btn btn-primary" (click)="updateadd()">add</button>
       </div>
     </div>
   </div>

@@ -49,6 +49,12 @@
                                     <span *ngIf="localisation.errors?.['required']">Le localisation est obligatoire.</span>
                                 </div>
                                </div>
+                               <div class="col-12 col-lg-6">
+                                <input class="form-control" type="text" name="localisation" [(ngModel)]="user.residenceName" #residenceName="ngModel" placeholder="residenceName" required>
+                                <div *ngIf="residenceName.touched && residenceName.invalid" class="text-danger">
+                                 <span *ngIf="residenceName.errors?.['required']">Le localisation est obligatoire.</span>
+                             </div>
+                            </div>
                                <div class="col-12">
                                    <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="E-mail Address" #email="ngModel" required>
                                    <div *ngIf="email.touched && email.invalid" class="text-danger">

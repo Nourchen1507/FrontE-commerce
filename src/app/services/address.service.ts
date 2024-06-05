@@ -25,10 +25,14 @@ export class AddressService {
   constructor(private http: HttpClient) {}
 
 
-  addaddress(commande:any):Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${environment.apiUrl}/adresse/add`, commande,{ headers});
+  getAllAdresses(): Observable<any> {
+    return this.http.get(environment.apiUrl);
   }
+  createAdresse(addresseDto: any): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(environment.apiUrl, addresseDto, { headers });
+  }
+
 
   getAllUsersInAdresse(id: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

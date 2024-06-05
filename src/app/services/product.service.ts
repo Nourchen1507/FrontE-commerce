@@ -60,6 +60,13 @@ export class ProductService {
   getProductsByCategoryName(categoryName: string): Observable<any> {
     return this.http.get<any>(`${this.appurl}/categoryByName/${categoryName}`);
   }
+  deleteProduct(productId:any): Observable<any> {
+    const data={
+      idarticle:productId
+    }
+    return this.http.post(`${environment.apiUrl}/Product/delete`,data);
+  }
+
 }
 
 

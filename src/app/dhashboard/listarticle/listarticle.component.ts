@@ -28,8 +28,31 @@ ngOnInit(): void {
     })
 }
 
+onFileSelected(event: any) {
+  this.article.image = event.target.files[0];
+}
 
 article=new Product()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 f=false
 edit(id:number,f:boolean){
@@ -40,15 +63,24 @@ edit(id:number,f:boolean){
     }
   })
 }
-//uploadImage() {
-  //const body = { imageUrl: this.imageUrl };
-  //const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  //return this.http.post<any>('https://localhost:7064/api/Product', body, { headers });
-//}
-//onFileSelected(event: any) {
- // const file = event.target.files[0];
-  //if (file) {
-  //  this.imageUrl = URL.createObjectURL(file);
-  
+
+removeFromList(item: any) {
+  this.articleService.deleteProduct(item.productId).subscribe()
+  const index = this.liste.findIndex(e => e.idarticle === item.productId);
+
+  if (index !== -1) {
+    this.liste.splice(index, 1); // Remove the item from the array
+  }
+
+
+}
+
+delete(productId:any){
+  console.log(productId);
+
+  this.articleService.deleteProduct(productId).subscribe(data=>{alert("delete")},(error)=>{
+    alert("error")
+  })}
+
 
 }

@@ -20,32 +20,44 @@ export class AddarticleComponent {
     private articleService: ProductService, private http:HttpClient) {
 
   }
+
   imageUrl : string = '';
 
-  //uploadImage() {
-   // const body = { imageUrl: this.imageUrl };
-    //const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    //return this.http.post<any>('https://localhost:7064/api/Product', body, { headers });
-  //}
- // onFileSelected(event: any) {
-    //const file = event.target.files[0];
-    //if (file) {
-     // this.imageUrl = URL.createObjectURL(file);
-    // }
- // }
- 
+  uploadImage(imageFile: File) {
+    const formData = new FormData();
+    formData.append('image', imageFile, imageFile.name);
+    return this.http.post<any>('https://localhost:7064/api/Product', formData);
+  }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.uploadImage(file).subscribe(
+        response => {
+          console.log('Image uploaded successfully', response);
+          this.imageUrl = URL.createObjectURL(file); // Mettre à jour l'URL pour afficher l'aperçu
+        },
+        error => {
+          console.error('Failed to upload image', error);
+          alert("Failed to upload image");
+        }
+      );
+    }
+  }
+  
+
   onSubmit() {
     const articleData = new FormData();
+
     articleData.append('nom', this.article.name);
     articleData.append('description', this.article.description);
 
     articleData.append('category', this.article.category);
     articleData.append('prix', String(this.article.price));
 
-    //articleData.append('image', this.article.imageUrl);
 
     this.articleService.CreateProductAsync(articleData).subscribe(
       response => {
+        console.log(articleData)
         alert("Article added successfully")
         console.log('Article added successfully', response);
         // Do something after successful article addition
@@ -57,5 +69,4 @@ export class AddarticleComponent {
       }
     );
   }
-
 }

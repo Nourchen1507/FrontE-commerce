@@ -1,11 +1,7 @@
 import { Injectable, Pipe } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { User } from '../Model/User';
-import axios from 'axios';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -97,6 +93,24 @@ export class UserService {
   getIsLoggedInadmin(): boolean {
     const isLoggedInString = sessionStorage.getItem(this.isAdmin);
     return isLoggedInString ? JSON.parse(isLoggedInString) : false;
+  }
+
+  update(user: any): Observable<any> {
+    const data = {
+      userId: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      adresseId: user.adresseId,
+      email: user.email,
+      phone: user.phone,
+      localisation: user.localisation,
+      password: user.password
+    };
+    const accessToken = this.getToken('token');
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + accessToken });
+
+    return this.http.post(`${environment.apiUrl}/Users/update`, data, { headers: headers });
   }
 }
 

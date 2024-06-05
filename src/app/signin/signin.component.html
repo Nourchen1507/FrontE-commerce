@@ -9,43 +9,51 @@
              
                 <input class="form-control form-control-lg" type="text" name="nom" [(ngModel)]="user.firstName" placeholder="Nom" #nom="ngModel" required>
                 <div *ngIf="nom.touched && nom.invalid" class="text-danger">
-                 <span *ngIf="nom.errors?.['required']">Le nom est obligatoire.</span>
+                 <span *ngIf="nom.errors?.['required']">Le Nom est obligatoire.</span>
              </div>
             </div>
             <div class="col-12 col-lg-6">
-             <input class="form-control form-control-lg" type="text" name="prenom" [(ngModel)]="user.lastName" #prenom="ngModel" placeholder="prenom" required>
+             <input class="form-control form-control-lg" type="text" name="prenom" [(ngModel)]="user.lastName" #prenom="ngModel" placeholder="Prenom" required>
              <div *ngIf="prenom.touched && prenom.invalid" class="text-danger">
-               <span *ngIf="prenom.errors?.['required']">Le prenom est obligatoire.</span>
+               <span *ngIf="prenom.errors?.['required']">Le Prenom est obligatoire.</span>
            </div>
          </div>
          <div class="col-12 col-lg-6">
-           <input class="form-control form-control-lg" type="text" name="num" [(ngModel)]="user.phone" placeholder="phone" #num="ngModel" required>
+           <input class="form-control form-control-lg" type="text" name="num" [(ngModel)]="user.phone" placeholder="Votre Numéro" #num="ngModel" required>
            <div *ngIf="num.touched && num.invalid" class="text-danger">
-             <span *ngIf="num.errors?.['required']">Le num est obligatoire.</span>
+             <span *ngIf="num.errors?.['required']">Le numero est obligatoire.</span>
          </div>
-
+         </div>
          <div class="col-12 col-lg-6">
-          <input class="form-control form-control-lg" type="text" name="CIN" [(ngModel)]="user.CIN" placeholder="CIN" #num="ngModel" required>
-       
+          <input class="form-control form-control-lg" type="text" name="number" [(ngModel)]="user.CIN" placeholder="CIN" #CIN="ngModel" required>
+          <div *ngIf="CIN.touched && CIN.invalid" class="text-danger">
+            <span *ngIf="CIN.errors?.['required']">CIN est obligatoire.</span>
         </div>
        </div>
             <div class="col-12 col-lg-6">
-                <input class="form-control form-control-lg" type="text" name="localisation" [(ngModel)]="user.localisation" #localisation="ngModel" placeholder="localisation" required>
+                <input class="form-control form-control-lg" type="text" name="localisation" [(ngModel)]="user.localisation" #localisation="ngModel" placeholder="Localisation" required>
                 <div *ngIf="localisation.touched && localisation.invalid" class="text-danger">
-                 <span *ngIf="localisation.errors?.['required']">Le localisation est obligatoire.</span>
+                 <span *ngIf="localisation.errors?.['required']"> Localisation est obligatoire.</span>
              </div>
             </div>
+
+            <div class="col-12 col-lg-6">
+              <input class="form-control form-control-lg" type="text" name="residenceName" [(ngModel)]="user.residenceName" #residenceName="ngModel" placeholder="Nom du Residence" required>
+              <div *ngIf="residenceName.touched && residenceName.invalid" class="text-danger">
+               <span *ngIf="residenceName.errors?.['required']"> Nom du Residence est obligatoire.</span>
+           </div>
+          </div>
             <div class="col-12">
                 <input class="form-control form-control-lg" type="email" name="email"[(ngModel)]="user.email" placeholder="E-mail Address" #email="ngModel" required>
                 <div *ngIf="email.touched && email.invalid" class="text-danger">
-                 <span *ngIf="email.errors?.['required']">Le email est obligatoire.</span>
+                 <span *ngIf="email.errors?.['required']"> E-mail est obligatoire.</span>
              </div>
 
             </div>
             <div class="col-12">
-             <input class="form-control form-control-lg" type="text" name="adresse"[(ngModel)]="user.addresse"  #adresse="ngModel" placeholder="user Address" required>
+             <input class="form-control form-control-lg" type="text" name="adresse"[(ngModel)]="user.addresse"  #adresse="ngModel" placeholder="Address" required>
              <div *ngIf="adresse.touched && adresse.invalid" class="text-danger">
-               <span *ngIf="adresse.errors?.['required']">Le adresse est obligatoire.</span>
+               <span *ngIf="adresse.errors?.['required']">L'adresse est obligatoire.</span>
            </div>
          </div>
          <div class="col-12">
@@ -55,7 +63,7 @@
             <div class="col-12">
                 <input class="form-control form-control-lg" type="text" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="Password" required minlength="8">
                 <div *ngIf="password.touched && password.invalid" class="text-danger">
-                 <span *ngIf="password.errors?.['required']">Le nom est obligatoire.</span>
+                 <span *ngIf="password.errors?.['required']"> Le mot de passe  est obligatoire.</span>
                  <span *ngIf="password.errors?.['minlength']">Le mot de passe doit avoir au moins 8 caractères..</span>
 
              </div>
@@ -84,7 +92,7 @@
             <div *ngIf="email1.errors?.['required']">Email is required.</div>
           </div>
 
-          <input type="password" id="form3Example4" #password1="ngModel" [(ngModel)]="user.password" name="password"class="form-control form-control-lg"
+          <input type="password" id="form3Example4" #password1="ngModel" [(ngModel)]="user.password" name="Password"class="form-control form-control-lg"
             placeholder="Enter password" required/>
             <div *ngIf="password1.touched && password1.invalid" class="text-danger">
               <div *ngIf="password1.errors?.['required']">Password is required.</div>

@@ -5070,7 +5070,7 @@
                   <div class="text-start">
                     <p>Code promo</p>
                    </div>
-                  
+                   <input type="text" name="code_promo" [(ngModel)]="orders.code_promo" class="form-control-sm">
 
                   </div>
 
@@ -5083,9 +5083,9 @@
                   class="d-flex align-items-center justify-content-between profile-img4"
                 >
                 <div class="text-start">
-                  <p>Order Id </p>
+                  <p>Note pour livreur</p>
                  </div>
-                
+                 <input type="text" name="NotePourLivreur" [(ngModel)]="orders.NotePourLivreur" class="form-control-sm">
 
                 </div>
 
@@ -5098,42 +5098,26 @@
                 class="d-flex align-items-center justify-content-between profile-img4"
               >
               <div class="text-start">
-                <p>date Order</p>
+                <p>allergies</p>
                </div>
-              
+               <input type="text" name="allergies" [(ngModel)]="orders.id" class="form-control-sm">
+
               </div>
             
 
             </div>
             <br>
             <div class="text-start">
-              <p> Total</p>
+              <p> Total: {{total | number:'1.2-2' }}</p>
             
             
             </div>
             <hr>
-              <!-- <div
-                class="rounded-pill bg-soft-primary iq-my-cart"
-
-              >
-                <div
-                  class="d-flex align-items-center justify-content-between profile-img4"
-                >
-                <div class="text-start">
-                  <p>Total :</p>
-                 </div>
-                 <p class="ml-2">$100</p>
-
-
-                </div>
-
-              </div> -->
-                <!-- Promo Code Input -->
 
                 <div class="text-center mt-5">
-                  <button
+                  <button *ngIf="!show"
                     type="button"
-                   
+                    (click)="addcommande()"
                     class="btn btn-primary"
 
                   >
@@ -5152,7 +5136,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-md-10"  style="width: 700px">
+        <div class="col-lg-8 col-md-10" *ngIf="!hidden" style="width: 700px">
           <div class="card" >
             <div class="card-header">
               <h4 class="list-main">My Cart</h4>
@@ -5160,17 +5144,26 @@
             <div class="card-body">
               <div
                 class="rounded-pill bg-soft-primary iq-my-cart"
-                *ngFor="let x of liste"
+                *ngFor="let x of listeadd"
               >
                 <div
                   class="d-flex align-items-center justify-content-between profile-img4"
                 >
                   <div class="profile-img11">
-                   
+                    <img
+                    
+                      class="img-fluid rounded-pill avatar-115 blur-shadow position-end"
+                      alt="img"
+                    />
+                    <img
+                     
+                      class="img-fluid rounded-pill avatar-115"
+                      alt="img"
+                    />
                   </div>
                   <div class="d-flex align-items-center profile-content">
                     <div>
-                      <h6 class="mb-1 heading-title fw-bolder"></h6>
+                      <h6 class="mb-1 heading-title fw-bolder">{{ x.name }}</h6>
 
                       <span class="d-flex align-items-center">
                         <div class="quantity">
@@ -5181,14 +5174,14 @@
                             value="1"
                             min="1"
                             class="custom-input"
-                          
+                            [(ngModel)]="x.qte"
                           />
                         </div>
                         <div class="me-4 text-end p-2">
-                          <a role="button" class="bg-transparent" data-toggle="modal" data-target="#exampleModalCenter1">
+                          <a role="button" class="bg-transparent" data-toggle="modal" data-target="#exampleModalCenter1" (click)="getidarticle(x)">
                             <span class="mb-1">
                               <!-- Your SVG Icon for Supplement -->
-                      <img src="../../assets/img/french-fries.png" alt="" srcset="">
+            
                                                      
                               
                             </span>
@@ -5200,9 +5193,8 @@
                    
                     
                   </div>
-               
                   <div class="me-4 text-end">
-                    <a role="button" class="bg-transparent" >
+                    <a role="button" class="bg-transparent" (click)="removeFromList(x)">
                       <span class="mb-1">
                         <svg
                           width="20"
@@ -5436,7 +5428,7 @@
           <script>
             document.write(new Date().getFullYear());
           </script>
-          Fast food, Made with
+         E-Commerce Application, Made with
           <span class="text-gray">
             <svg
               width="15"

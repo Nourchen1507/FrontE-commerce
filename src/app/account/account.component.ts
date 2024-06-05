@@ -32,14 +32,16 @@ export class AccountComponent implements OnInit {
 
   data: any;
   liste: User[] = [];
-  listeadresse:any[]=[]
+   listeadresse:any[]=[]
   user = new User();
   listeordors:any[]=[];
   orders = new Order();
   
   address = new AdresseClient();
-  val = false;
+
   ngOnInit(): void {
+
+
     const id = this.api.getToken('userId');
   
     if (id !== null) { // Vérification que id n'est pas null
@@ -74,7 +76,32 @@ export class AccountComponent implements OnInit {
       console.error('User ID is null.'); 
     }
   }
+  deleteaddress(id:any){
+    this.addressService.deleteaddress(id).subscribe(data=>{
+       alert("success")
+     })
   
+      const index = this.listeadresse.findIndex(e => e.idadresse === id);
+  
+      if (index !== -1) {
+        this.listeadresse.splice(index, 1); // Remove the item from the array
+      }
+  
+  
+  }
+  updateadd(){
+    this.addressService.updateaddress(this.address).subscribe(data=>{
+      console.log(data)
+      alert("success")
+    })
+  }
+  editadresse(id:number){
+    this.listeadresse.map(x=>{
+      if(id==x.idadresse){
+        this.address=x
+      }
+    })
+  }
   email:any
    delete(email:any){
     console.log(email);
@@ -87,23 +114,36 @@ export class AccountComponent implements OnInit {
      })
    }
 
-  edit(id: number, f: boolean) {
-    this.val = f;
-    
+    val=false
+  edit(id:string,f:boolean){
+   this.val=f
+   this.liste.map(x=>{
+    if(x.id==id){
+      this.user=x
+    }
+   })
   }
+  close(f:boolean){
+    this.val=f
+   }
+   update(){
 
-  close(f: boolean) {
-    this.val = f;
-  }
+    console.log(this.user);
+    this.api.update(this.user).subscribe(data=>{
+      alert("success")
+      console.log(data);
 
+    })
+   }
+  
   onSubmit() {
-    this.address.iduser= String(this.api.getToken('userId'));
+    this.address.id= String(this.api.getToken('userId'));
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           this.address.latitude = position.coords.latitude;
           this.address.longitude = position.coords.longitude;
-          this.addressService.addaddress(this.address).subscribe(() => {
+          this.addressService.createAdresse(this.address).subscribe(() => {
             alert('Address added successfully');
             this.listeadresse.push(this.address);
           });
@@ -119,7 +159,7 @@ export class AccountComponent implements OnInit {
 
   private fetchAddressData() {
     const id = String(this.api.getToken('userId'));
-    this.addressService.getAllUsersInAdresse(id).subscribe((data: any) => {
+    this.addressService.getAllAdresses().subscribe((data: any) => {
       this.user = data;
     });
   }
