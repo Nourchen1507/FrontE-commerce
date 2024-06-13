@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { User } from '../Model/User';
 import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,12 @@ export class UserService {
   private url = "Users"
   baseApiUrl : string = environment.apiUrl
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpclient: HttpClient) {}
 
 
 
   login(email:any, password :any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/Auth/login`,{email,password});
+    return this.httpclient.post(`${environment.apiUrl}/Auth/login`,{email,password});
   }
 
   deleteUser(email: string, id: string): Observable<any> {
@@ -26,25 +27,25 @@ export class UserService {
     const options = { headers: headers };
     const requestBody = { email: email, iduser: id };
   
-    return this.http.delete<any>(`${environment.apiUrl}/${id}`, { ...options, body: requestBody });
+    return this.httpclient.delete<any>(`${environment.apiUrl}/${id}`, { ...options, body: requestBody });
   }
   
  
   getuser(): Observable<any> {
     const data = {id:''}
-    return this.http.post(`${environment.apiUrl}/${this.url}`,data);
+    return this.httpclient.post(`${environment.apiUrl}/${this.url}`,data);
   }
   
   getUsers(id: any): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/${this.url}/${id}`);
+    return this.httpclient.get(`${environment.apiUrl}/${this.url}/${id}`);
   }
   
   GetAllUsers(): Observable<User[]>{
-   return this.http.get<User[]>(this.baseApiUrl + '/users')
+   return this.httpclient.get<User[]>(this.baseApiUrl + '/users')
   }
 
   registerUser(user: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/${this.url}`, user);
+    return this.httpclient.post(`${environment.apiUrl}/${this.url}`, user);
   }
 
   private readonly TOKEN_KEY = 'access_token';
@@ -110,7 +111,7 @@ export class UserService {
     const accessToken = this.getToken('token');
     const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + accessToken });
 
-    return this.http.post(`${environment.apiUrl}/Users/update`, data, { headers: headers });
+    return this.httpclient.post(`${environment.apiUrl}/Users/update`, data, { headers: headers });
   }
 }
 
