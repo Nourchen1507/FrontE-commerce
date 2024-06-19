@@ -31,16 +31,28 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
+       "budgets": [
+   {
+      "type": "initial",
+      "maximumWarning": "4mb", 
+      "maximumError": "5mb"
+   },
+   {
+      "type": "anyComponentStyle",
+      "maximumWarning": "150kb",
+      "maximumError": "150kb"
+   },
                 {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "type": "bundle",
+                  "name": "aprycot.min.css",
+                  "maximumWarning": "400kb",
+                  "maximumError": "500kb"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "type": "bundle",
+                  "name": "bootstrap.min.css",
+                  "maximumWarning": "150kb",
+                  "maximumError": "200kb"
                 }
               ],
               "outputHashing": "all"

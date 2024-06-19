@@ -5,10 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "publish:nexus": "npm publish --registry=http://192.168.232.129:8081/repository/npm-hosted/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+  
   "dependencies": {
     "@angular/animations": "^16.2.0",
     "@angular/common": "^16.2.0",
