@@ -42,7 +42,7 @@
       "maximumWarning": "150kb",
       "maximumError": "150kb"
    },
-                {
+              {
                   "type": "bundle",
                   "name": "aprycot.min.css",
                   "maximumWarning": "400kb",
