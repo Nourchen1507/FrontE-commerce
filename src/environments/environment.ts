@@ -5,8 +5,10 @@
 export const environment = {
     production: false,
 
-   apiUrl : "https://localhost:7064/api"
+   apiUrl : "https://localhost:5000/api"
   };
+
+  
   
   /*
    * For easier debugging in development mode, you can import the following file

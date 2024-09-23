@@ -16,19 +16,10 @@ spec:
     spec:
       containers:
         - name: frontrfc
-          image: nourchenacr.azurecr.io/frontendrfc:v1 
+          image: nourchenh/frontrfc:6
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "200m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-      imagePullSecrets:
-        - name: acr-secret
 ---
 apiVersion: v1
 kind: Service
@@ -42,3 +33,24 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+      
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontrfc-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: www.hedfidevops.com  # Remplacez par le nom de domaine de votre choix
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontrfc-service
+                port:
+                  number: 80

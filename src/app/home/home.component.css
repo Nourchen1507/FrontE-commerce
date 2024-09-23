@@ -1,0 +1,28 @@
+/* Style pour le carousel vertical */
+.owl-carousel {
+    position: relative;
+    height: 500px; /* Ajustez la hauteur selon vos besoins */
+    overflow: hidden;
+}
+
+.vendor-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vendor-item img {
+    width: auto;
+    height: 100%;
+    display: block;
+}
+
+.owl-stage {
+    display: flex;
+    flex-direction: column; /* Alignement vertical */
+}
+
+.owl-item {
+    display: flex;
+    justify-content: center;
+}
